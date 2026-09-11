@@ -2,16 +2,32 @@ from shapely.geometry import Point as ShapelyPoint
 import math
 
 
-class Point:
+class SpatialObject:
+    """Base abstraction for domain objects that have geometry."""
+
+    def __init__(self, geometry):
+        self.geometry = geometry
+
+    def bbox(self):
+        return self.geometry.bounds
+
+    def intersects(self, other):
+        return self.geometry.intersects(other.geometry)
+
+
+class Point(SpatialObject):
     def __init__(self, id, lon, lat, name=None, tag=None):
+
         if not (-180 <= lon <= 180):
             raise ValueError("Longitude must be between -180 and 180")
 
         if not (-90 <= lat <= 90):
             raise ValueError("Latitude must be between -90 and 90")
 
+        geometry = ShapelyPoint(lon, lat)
+        super().__init__(geometry)
+
         self.id = id
-        self.geometry = ShapelyPoint(lon, lat)
         self.name = name
         self.tag = tag
 
@@ -36,6 +52,7 @@ class Point:
 
     @staticmethod
     def haversine_m(lon1, lat1, lon2, lat2):
+
         R = 6_371_000.0
 
         phi1 = math.radians(lat1)
@@ -73,45 +90,24 @@ class Point:
             "id": self.id,
             "name": self.name,
             "tag": self.tag,
-            "geometry": [self.lon, self.lat],
-            "bbox": list(self.geometry.bounds)
+            "geometry": [
+                self.lon,
+                self.lat
+            ],
+            "bbox": list(self.bbox())
         }
 
-class SpatialObject:
-    """Base abstraction for domain objects that have geometry."""
-
-    def __init__(self, geometry):
-        self.geometry = geometry
-
-    def bbox(self):
-        return self.geometry.bounds
-
-    def intersects(self, other):
-        return self.geometry.intersects(other.geometry)
-
-class Point(SpatialObject):
-    def __init__(self, id, lon, lat, name=None, tag=None):
-        if not (-180 <= lon <= 180):
-            raise ValueError("Longitude must be between -180 and 180")
-
-        if not (-90 <= lat <= 90):
-            raise ValueError("Latitude must be between -90 and 90")
-
-        geometry = ShapelyPoint(lon, lat)
-        super().__init__(geometry)
-        self.id = id
-        self.name = name
-        self.tag = tag
 
 class Parcel(SpatialObject):
     def __init__(self, parcel_id, geometry, attributes: dict):
         super().__init__(geometry)
+
         self.parcel_id = parcel_id
         self.attributes = attributes
 
     def as_dict(self):
-            return {
-                "parcel_id": self.parcel_id,
-                "bbox": list(self.bbox()),
-                "attributes": self.attributes
-            }
+        return {
+            "parcel_id": self.parcel_id,
+            "bbox": list(self.bbox()),
+            "attributes": self.attributes
+        }
