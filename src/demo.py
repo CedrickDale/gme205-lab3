@@ -81,3 +81,9 @@ geom = Polygon([
 parcel = Parcel(101, geom, attributes)
 print(parcel.bbox())
 print(parcel.as_dict())
+
+inside = Point("IN", 2, 2)
+outside = Point("OUT", 12, 2)
+
+print(inside.intersects(parcel)) # True
+print(outside.intersects(parcel)) # False

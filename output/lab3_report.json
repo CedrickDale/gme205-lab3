@@ -1,0 +1,180 @@
+{
+    "point": {
+        "P1": {
+            "id": "P1",
+            "name": "Quezon Hall",
+            "tag": "poi",
+            "geometry": [
+                121.058,
+                14.6507
+            ],
+            "bbox": [
+                121.058,
+                14.6507,
+                121.058,
+                14.6507
+            ]
+        },
+        "P2": {
+            "id": "P2",
+            "name": "Sunken Garden",
+            "tag": "poi",
+            "geometry": [
+                121.0637,
+                14.6545
+            ],
+            "bbox": [
+                121.0637,
+                14.6545,
+                121.0637,
+                14.6545
+            ]
+        },
+        "P3": {
+            "id": "P3",
+            "name": "Vargas Museum",
+            "tag": "poi",
+            "geometry": [
+                121.0609,
+                14.6532
+            ],
+            "bbox": [
+                121.0609,
+                14.6532,
+                121.0609,
+                14.6532
+            ]
+        },
+        "P4": {
+            "id": "P4",
+            "name": "UPIS",
+            "tag": "school",
+            "geometry": [
+                121.0565,
+                14.6573
+            ],
+            "bbox": [
+                121.0565,
+                14.6573,
+                121.0565,
+                14.6573
+            ]
+        },
+        "P5": {
+            "id": "P5",
+            "name": "GT Toyota Gate",
+            "tag": "gate",
+            "geometry": [
+                121.065,
+                14.6496
+            ],
+            "bbox": [
+                121.065,
+                14.6496,
+                121.065,
+                14.6496
+            ]
+        },
+        "P6": {
+            "id": "P6",
+            "name": "Balagtas Hall",
+            "tag": "building",
+            "geometry": [
+                121.0538,
+                14.6527
+            ],
+            "bbox": [
+                121.0538,
+                14.6527,
+                121.0538,
+                14.6527
+            ]
+        },
+        "P7": {
+            "id": "P7",
+            "name": "CHK",
+            "tag": "building",
+            "geometry": [
+                121.0672,
+                14.6559
+            ],
+            "bbox": [
+                121.0672,
+                14.6559,
+                121.0672,
+                14.6559
+            ]
+        },
+        "P8": {
+            "id": "P8",
+            "name": "UP Town Center",
+            "tag": "landmark",
+            "geometry": [
+                121.0621,
+                14.6489
+            ],
+            "bbox": [
+                121.0621,
+                14.6489,
+                121.0621,
+                14.6489
+            ]
+        },
+        "P9": {
+            "id": "P9",
+            "name": "Katipunan Ave",
+            "tag": "road",
+            "geometry": [
+                121.0552,
+                14.6478
+            ],
+            "bbox": [
+                121.0552,
+                14.6478,
+                121.0552,
+                14.6478
+            ]
+        },
+        "P10": {
+            "id": "P10",
+            "name": "Melchor Hall",
+            "tag": "building",
+            "geometry": [
+                121.0615,
+                14.6568
+            ],
+            "bbox": [
+                121.0615,
+                14.6568,
+                121.0615,
+                14.6568
+            ]
+        }
+    },
+    "parcel": {
+        "parcel_id": 101,
+        "bbox": [
+            121.057,
+            14.649700000000001,
+            121.05900000000001,
+            14.6517
+        ],
+        "attributes": {
+            "area": null,
+            "zone": "Demonstration Parcel",
+            "is_active": true
+        }
+    },
+    "relationships": {
+        "P1_intersects_parcel": true,
+        "P2_intersects_parcel": false,
+        "P3_intersects_parcel": false,
+        "P4_intersects_parcel": false,
+        "P5_intersects_parcel": false,
+        "P6_intersects_parcel": false,
+        "P7_intersects_parcel": false,
+        "P8_intersects_parcel": false,
+        "P9_intersects_parcel": false,
+        "P10_intersects_parcel": false
+    }
+}
