@@ -87,3 +87,124 @@ outside = Point("OUT", 12, 2)
 
 print(inside.intersects(parcel)) # True
 print(outside.intersects(parcel)) # False
+
+# ==================================================
+# PART H - CHALLENGE 1: DATA TO OBJECT BOUNDARY
+# ==================================================
+
+# Valid record
+valid_record = {
+    "id": "C1",
+    "lon": 121.0,
+    "lat": 14.6,
+    "name": "Challenge Point",
+    "tag": "POI"
+}
+
+challenge_point = Point.from_dict(valid_record)
+
+print("\n======================================")
+print("CHALLENGE 1: DATA TO OBJECT")
+print("======================================")
+print("Valid Point:")
+print("ID:", challenge_point.id)
+print("Coordinates:", challenge_point.to_tuple())
+
+
+# Invalid record
+invalid_record = {
+    "id": "C2",
+    "lon": 999,
+    "lat": 14.6
+}
+
+try:
+    Point.from_dict(invalid_record)
+
+except ValueError as error:
+    print("\nInvalid Point:")
+    print("ID:", invalid_record["id"])
+    print(error)
+
+# ==================================================
+# PART H - CHALLENGE 2: OBJECT TO STRUCTURED OUTPUT
+# ==================================================
+
+point = Point(
+    "C3",
+    121.0,
+    14.6,
+    name="Challenge Point",
+    tag="POI"
+)
+print("\n======================================")
+print("CHALLENGE 2: OBJECT TO DATA")
+print("======================================")
+print("Point as dictionary:")
+print(point.as_dict())
+
+parcel_attributes = {
+    "area": 50.0,
+    "zone": "Residential",
+    "is_active": True
+}
+
+parcel_geom = Polygon([
+    (0, 0),
+    (10, 0),
+    (10, 5),
+    (0, 5)
+])
+
+parcel = Parcel(
+    201,
+    parcel_geom,
+    parcel_attributes
+)
+
+print("\nParcel as dictionary:")
+print(parcel.as_dict())
+
+print("\n==============================================")
+print("CHALLENGE 3: SHARED SPATIAL BEHAVIOR")
+print("==============================================")
+
+parcel_geom = Polygon([
+    (0, 0),
+    (10, 0),
+    (10, 5),
+    (0, 5)
+])
+
+parcel = Parcel(
+    301,
+    parcel_geom,
+    {
+        "area": 50.0,
+        "zone": "Residential",
+        "is_active": True
+    }
+)
+
+inside = Point("IN", 2, 2)
+outside = Point("OUT", 12, 2)
+
+print(
+    "Inside point intersects parcel:",
+    inside.intersects(parcel)
+)
+
+print(
+    "Outside point intersects parcel:",
+    outside.intersects(parcel)
+)
+
+print(
+    "Parcel intersects inside point:",
+    parcel.intersects(inside)
+)
+
+print(
+    "Parcel intersects outside point:",
+    parcel.intersects(outside)
+)
