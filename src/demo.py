@@ -80,3 +80,4 @@ geom = Polygon([
 
 parcel = Parcel(101, geom, attributes)
 print(parcel.bbox())
+print(parcel.as_dict())

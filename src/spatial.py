@@ -108,3 +108,10 @@ class Parcel(SpatialObject):
         super().__init__(geometry)
         self.parcel_id = parcel_id
         self.attributes = attributes
+
+    def as_dict(self):
+            return {
+                "parcel_id": self.parcel_id,
+                "bbox": list(self.bbox()),
+                "attributes": self.attributes
+            }
