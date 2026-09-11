@@ -1,4 +1,5 @@
-from spatial import Point
+from spatial import Point, Parcel
+from shapely.geometry import Polygon
 
 # ===================================================================
 # PART B Validation
@@ -58,5 +59,24 @@ from spatial import Point
 # ===================================================================
 # PART D Validation
 # ===================================================================
-p = Point("A", 121.0, 14.6)
-print(p.bbox())
+#p = Point("A", 121.0, 14.6)
+#print(p.bbox())
+
+# ===================================================================
+# PART E Validation
+# ===================================================================
+attributes = {
+    "area": 50.0,
+    "zone": "Residential",
+    "is_active": True
+}
+
+geom = Polygon([
+    (0, 0),
+    (10, 0),
+    (10, 5),
+    (0, 5)
+])
+
+parcel = Parcel(101, geom, attributes)
+print(parcel.bbox())
