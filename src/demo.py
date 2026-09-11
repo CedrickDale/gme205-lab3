@@ -21,3 +21,30 @@ meters = p.distance_to(q)  # Haversine implementation from Lab 2
 
 print("Cartesian distance:", coordinate_distance)
 print("Haversine distance:", meters, "meters")
+
+# Dictionary to Point
+
+record = {
+    "id": "A", 
+    "lon": 121.0,
+    "lat": 14.6,
+    "name": "Gate",
+    "tag": "POI"
+}
+
+p2 = Point.from_dict(record)
+
+print(p2.to_tuple())
+print(p2.as_dict())
+
+# Invalid dictionary
+invalid_record = {
+    "id": "B",
+    "lon": 999,
+    "lat": 14.6
+}
+
+try:
+    invalid_point = Point.from_dict(invalid_record)
+except ValueError as error:
+    print("Invalid record:", error)
