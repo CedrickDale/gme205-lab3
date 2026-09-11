@@ -76,3 +76,29 @@ class Point:
             "geometry": [self.lon, self.lat],
             "bbox": list(self.geometry.bounds)
         }
+
+class SpatialObject:
+    """Base abstraction for domain objects that have geometry."""
+
+    def __init__(self, geometry):
+        self.geometry = geometry
+
+    def bbox(self):
+        return self.geometry.bounds
+
+    def intersects(self, other):
+        return self.geometry.intersects(other.geometry)
+
+class Point(SpatialObject):
+    def __init__(self, id, lon, lat, name=None, tag=None):
+        if not (-180 <= lon <= 180):
+            raise ValueError("Longitude must be between -180 and 180")
+
+        if not (-90 <= lat <= 90):
+            raise ValueError("Latitude must be between -90 and 90")
+
+        geometry = ShapelyPoint(lon, lat)
+        super().__init__(geometry)
+        self.id = id
+        self.name = name
+        self.tag = tag
